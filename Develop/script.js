@@ -2,7 +2,13 @@ var generateBtn = document.querySelector("#generate");
 
 
 function generatePassword () {
-var characterLimit = prompt("How many characters in your new password?");
+
+var characterUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var characterLower = 'abcdefghijklmnopqrstuvwxyz'
+var characterNumber = '0123456789'
+var characterSpecial = '!@#$%^&*()'
+
+characterLimit = prompt("How many characters in your new password?");
 
 if(characterLimit < 8) {
 alert ("please choose between 8-128 characters!");
@@ -12,38 +18,60 @@ alert ("please choose between 8-128 characters!");
 }
   else console.log(characterLimit);
 
-var characterType = confirm("Include uppercase letters?");
-var characterType = confirm("Include lowercase letters?");
-var characterType = confirm("Include numbers?");
-var characterType = confirm("Include special characters?");
+var Upper = confirm("Include uppercase letters?");
+var Lower = confirm("Include lowercase letters?");
+var Number = confirm("Include numbers?");
+var Special = confirm("Include special characters?");
 
-  if (characterType === true)
-  console.log (yes)
+var possibleCharacters = "";
+if(Upper === true && !Lower && !Number && !Special) {
+    possibleCharacters = characterUpper
+} else if (Upper === true && Lower === true && !Number && !Special) {
+    possibleCharacters = characterUpper + characterLower
+}
 
-//   (characterLimit * characterType)
-//  random math to select characters--how do I select from each character group
+// if(Upper === true) {
+//     for(let i = 0; i <= characterLimit; i++) {
+//         var character = characterUpper.charAt(Math.floor(Math.random() * characterUpper.length));
+//       console.log(character)  
+//       } 
+// }
 
-//   if (confirm("Include lowercase letters?"))
+// if(Lower === true) {
+//     for(let i = 0; i <= characterLimit; i++) {
+//         var character = characterLower.charAt(Math.floor(Math.random() * characterLower.length));
+//       console.log(character)  
+//       }
+// }
 
+// if(Number === true) {
+//     for(let i = 0; i <= characterLimit; i++) {
+//         var character = characterNumber.charAt(Math.floor(Math.random() * characterNumber.length));
+//       console.log(character)  
+//       }
+// }
 
-//   var characterType = confirm("Include lowercase letters?");
-  
+// if(Special === true) {
+//     for(let i = 0; i <= characterLimit; i++) {
+//         var character = characterSpecial.charAt(Math.floor(Math.random() * characterSpecial.length));
+//       console.log(character)  
+//       }
+// }
+
 //   if (characterType === true)
 //   console.log (yes)
 
-//   var characterType = confirm("Include numbers?");
-  
-//   if (characterType === true)
-//   console.log (yes)
+let password = ""
 
-//   var characterType = confirm("Include special characters?");
-  
-//   if (characterType === true)
-//   console.log (yes)
+for(let i = 0; i <= characterLimit; i++) {
+      var character = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+    console.log(character)
+    password += character
+    console.log(i + " iteration: " + password)
+    }
+   
 
-
-    
-    return "password generated and displayed"
+    return password
 } 
 
 
@@ -71,7 +99,26 @@ generateBtn.addEventListener("click", writePassword);
 // display password that matched the criteria.
 
 
+//   (characterLimit * characterType)
+//  random math to select characters--how do I select from each character group
 
+//   if (confirm("Include lowercase letters?"))
+
+
+//   var characterType = confirm("Include lowercase letters?");
+  
+//   if (characterType === true)
+//   console.log (yes)
+
+//   var characterType = confirm("Include numbers?");
+  
+//   if (characterType === true)
+//   console.log (yes)
+
+//   var characterType = confirm("Include special characters?");
+  
+//   if (characterType === true)
+//   console.log (yes)
 
 // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
