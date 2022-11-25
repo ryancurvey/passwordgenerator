@@ -1,117 +1,127 @@
 var generateBtn = document.querySelector("#generate");
 
 
-function generatePassword () {
+function generatePassword() {
 
-var characterUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-var characterLower = 'abcdefghijklmnopqrstuvwxyz'
-var characterNumber = '0123456789'
-var characterSpecial = '!@#$%^&*()'
+    var characterUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    var characterLower = 'abcdefghijklmnopqrstuvwxyz'
+    var characterNumber = '0123456789'
+    var characterSpecial = '!@#$%^&*()'
 
-characterLimit = prompt("How many characters in your new password?");
+    var characterLimit = 0;
 
-if(characterLimit < 8) {
-alert ("please choose between 8-128 characters!");
 
-} else if (characterLimit > 128) {
-  alert ("please choose between 8-128 characters!");
-}
-  else console.log(characterLimit);
+    do {
+        characterLimit = prompt("How many characters in your new password?");
 
-var Upper = confirm("Include uppercase letters?");
-var Lower = confirm("Include lowercase letters?");
-var Number = confirm("Include numbers?");
-var Special = confirm("Include special characters?");
+        if (characterLimit < 8) {
+            alert("please choose between 8-128 characters!");
 
-console.log(Upper);
-console.log(Lower);
-console.log(Number);
-console.log(Special);
+        } else if (characterLimit > 128) {
+            alert("please choose between 8-128 characters!");
+        }
+        else {
+            console.log(characterLimit);
+        }
+        console.log(condition);
+    } while (characterLimit < 8 || characterLimit > 128);
 
-var possibleCharacters = "";
 
-if (Upper) {
-    possibleCharacters = possibleCharacters + characterUpper;
-}
+    var Upper = confirm("Include uppercase letters?");
+    var Lower = confirm("Include lowercase letters?");
+    var Number = confirm("Include numbers?");
+    var Special = confirm("Include special characters?");
 
-if (Lower) {
-    possibleCharacters = possibleCharacters + characterLower;
-}
-if (Number) {
-    possibleCharacters = possibleCharacters + characterNumber;
-}
-if (Special) {
-    possibleCharacters = possibleCharacters + characterSpecial;
-}
+    console.log(Upper);
+    console.log(Lower);
+    console.log(Number);
+    console.log(Special);
 
-let password = ""
+    var possibleCharacters = "";
 
-for(let i = 0; i <= characterLimit; i++) {
-      var character = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
-    console.log(character)
-    password += character
-    console.log(i + " iteration: " + password)
+    if (Upper) {
+        possibleCharacters = possibleCharacters + characterUpper;
     }
-   
+
+    if (Lower) {
+        possibleCharacters = possibleCharacters + characterLower;
+    }
+
+    if (Number) {
+        possibleCharacters = possibleCharacters + characterNumber;
+    }
+    if (Special) {
+        possibleCharacters = possibleCharacters + characterSpecial;
+    }
+
+    let password = ""
+
+    for (let i = 0; i < characterLimit; i++) {
+        var character = possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+        console.log(character)
+        password += character
+        console.log(i + " iteration: " + password)
+    }
+
 
     return password
-} 
+}
 
 
 
 
 // if(Upper === true && !Lower && !Number && !Special) {
-    //     possibleCharacters = characterUpper
-    
-    // } else if (Upper === true && Lower === true && !Number && !Special) {
-    //     possibleCharacters = characterUpper + characterLower
-    
-    // } else if (Upper === true && !Lower && Number === true && !Special) {
-    //     possibleCharacters = characterUpper + characterNumber
-    
-    // } else if (Upper === true && !Lower && !Number && Special === true) {
-    //     possibleCharacters = characterUpper + characterSpecial
-    
-    // } else if (Upper === true && Lower === true && Number === true && !Special) {
-    //     possibleCharacters = characterUpper + characterLower + characterNumber
-    
-    // } else if (Upper === true && Lower === true && !Number && Special === true) {
-    //         possibleCharacters = characterUpper + characterLower + characterSpecial
-        
-    //  } else if (Upper === true && !Lower  && Number === true && Special === true) {
-    //         possibleCharacters = characterUpper + characterNumber + characterSpecial
-    
-    // } else if (!Upper && Lower === true && !Number && !Special) {
-    //     possibleCharacters = characterLower
-    
-    // } else if (!Upper && Lower === true && Number === true && !Special) {
-    //     possibleCharacters = characterLower + characterNumber
-    
-    // } else if (!Upper&& Lower === true && !Number && Special === true) {
-    //     possibleCharacters =  characterLower + characterSpecial
-    
-    // } else if (!Upper && Lower === true && Number === true && Special === true) {
-    //     possibleCharacters = characterLower + characterNumber + characterSpecial
-    
-    // } else if (!Upper && !Lower && Number === true && !Special) {
-    //     possibleCharacters = characterNumber
-    
-    // } else if (!Upper && !Lower && Number === true && Special === true) {
-    //     possibleCharacters = characterNumber + characterSpecial
-    
-    // } else if (!Upper && !Lower && !Number && Special === true) {
-    //     possibleCharacters = characterSpecial
-    
-    // } else  (Upper === true && Lower === true && Number === true && Special === true) 
-    //     possibleCharacters = characterUpper + characterLower + characterNumber + characterSpecial  
+//     possibleCharacters = characterUpper
+
+// } else if (Upper === true && Lower === true && !Number && !Special) {
+//     possibleCharacters = characterUpper + characterLower
+
+// } else if (Upper === true && !Lower && Number === true && !Special) {
+//     possibleCharacters = characterUpper + characterNumber
+
+// } else if (Upper === true && !Lower && !Number && Special === true) {
+//     possibleCharacters = characterUpper + characterSpecial
+
+// } else if (Upper === true && Lower === true && Number === true && !Special) {
+//     possibleCharacters = characterUpper + characterLower + characterNumber
+
+// } else if (Upper === true && Lower === true && !Number && Special === true) {
+//         possibleCharacters = characterUpper + characterLower + characterSpecial
+
+//  } else if (Upper === true && !Lower  && Number === true && Special === true) {
+//         possibleCharacters = characterUpper + characterNumber + characterSpecial
+
+// } else if (!Upper && Lower === true && !Number && !Special) {
+//     possibleCharacters = characterLower
+
+// } else if (!Upper && Lower === true && Number === true && !Special) {
+//     possibleCharacters = characterLower + characterNumber
+
+// } else if (!Upper&& Lower === true && !Number && Special === true) {
+//     possibleCharacters =  characterLower + characterSpecial
+
+// } else if (!Upper && Lower === true && Number === true && Special === true) {
+//     possibleCharacters = characterLower + characterNumber + characterSpecial
+
+// } else if (!Upper && !Lower && Number === true && !Special) {
+//     possibleCharacters = characterNumber
+
+// } else if (!Upper && !Lower && Number === true && Special === true) {
+//     possibleCharacters = characterNumber + characterSpecial
+
+// } else if (!Upper && !Lower && !Number && Special === true) {
+//     possibleCharacters = characterSpecial
+
+// } else  (Upper === true && Lower === true && Number === true && Special === true) 
+//     possibleCharacters = characterUpper + characterLower + characterNumber + characterSpecial  
 
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+    passwordText.value = password;
 
 }
 
